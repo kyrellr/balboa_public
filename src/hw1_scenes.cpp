@@ -84,30 +84,53 @@ Matrix3x3 parse_transformation(const json &node) {
     }
 
     for (auto it = transform_it->begin(); it != transform_it->end(); it++) {
-        if (auto scale_it = it->find("scale"); scale_it != it->end()) {
-            Vector2 scale = Vector2{
-                (*scale_it)[0], (*scale_it)[1]
-            };
+        if (auto scale_it = it->find("scale"); scale_it != it->end()) { // If the current transformation is a scale
+            Vector2 scale = Vector2{(*scale_it)[0], (*scale_it)[1]};
             // TODO (HW1.4): construct a scale matrix and composite with F
-            UNUSED(scale); // silence warning, feel free to remove it
-        } else if (auto rotate_it = it->find("rotate"); rotate_it != it->end()) {
+            Matrix3x3 S;
+            S(0,0) = scale.x; // row 1, col 1
+            S(1,1) = scale.y; // row 2, col 2
+            S(2,2) = 1.0;
+            F = S*F; // composite with F
+        } else if (auto rotate_it = it->find("rotate"); rotate_it != it->end()) { // If current transformation is a rotation
             Real angle = *rotate_it;
             // TODO (HW1.4): construct a rotation matrix and composite with F
-            UNUSED(angle); // silence warning, feel free to remove it
-        } else if (auto translate_it = it->find("translate"); translate_it != it->end()) {
-            Vector2 translate = Vector2{
-                (*translate_it)[0], (*translate_it)[1]
-            };
+            Matrix3x3 R;
+            angle = angle * (c_PI/180);
+            R(0,0) = cos(angle); 
+            R(1,1) = cos(angle); 
+            R(0,1) = -sin(angle);
+            R(1,0) = sin(angle);
+            R(2,2) = 1.0;
+            F = R*F; // composite with F
+        } else if (auto translate_it = it->find("translate"); translate_it != it->end()) { // If current transformation is a translation
+            Vector2 translate = Vector2{(*translate_it)[0], (*translate_it)[1]};
             // TODO (HW1.4): construct a translation matrix and composite with F
-            UNUSED(translate); // silence warning, feel free to remove it
-        } else if (auto shearx_it = it->find("shear_x"); shearx_it != it->end()) {
+            Matrix3x3 T;
+            T(0,0) = 1.0;
+            T(1,1) = 1.0;
+            T(2,2) = 1.0;
+            T(0,2) = translate.x;
+            T(1,2) = translate.y;
+            F = T*F; // composite with F
+        } else if (auto shearx_it = it->find("shear_x"); shearx_it != it->end()) { // If current transformation is a shear
             Real shear_x = *shearx_it;
             // TODO (HW1.4): construct a shear matrix (x direction) and composite with F
-            UNUSED(shear_x); // silence warning, feel free to remove it
-        } else if (auto sheary_it = it->find("shear_y"); sheary_it != it->end()) {
+            Matrix3x3 X;
+            X(0,0) = 1.0;
+            X(1,1) = 1.0;
+            X(2,2) = 1.0;
+            X(0,1) = shear_x;
+            F = X*F; // composite with F
+        } else if (auto sheary_it = it->find("shear_y"); sheary_it != it->end()) { // If current transformation is a shear
             Real shear_y = *sheary_it;
             // TODO (HW1.4): construct a shear matrix (y direction) and composite with F
-            UNUSED(shear_y); // silence warning, feel free to remove it
+            Matrix3x3 Y;
+            Y(0,0) = 1.0;
+            Y(1,1) = 1.0;
+            Y(2,2) = 1.0;
+            Y(1,0) = shear_y;
+            F = Y*F; // composite with F
         }
     }
     return F;

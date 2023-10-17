@@ -1,0 +1,126 @@
+{
+    "resolution": [600, 600],
+    "background": [
+        0.025, 0.075, 0.025
+    ],
+    "objects": [
+        {
+            "type": "circle",
+            "center": [300, 375],
+            "radius": 200,
+            "color": [0.7, 0.0, 0.0]
+        }, 
+        {
+            "type": "triangle",
+            "color": [0.7, 0.0, 0.0],
+            "p0": [0, 90],
+            "p1": [0, 140],
+            "p2": [80, 145],
+            "transform": [
+                {"translate": [325, 0]}
+            ],
+            "alpha": 0.5
+        }, 
+        {
+            "type": "rectangle",
+            "color": [0.7, 0.0, 0.0],
+            "transform": [
+                {"scale": [60, 100]},
+                {"translate": [265,90]}
+            ]
+        },
+        {
+            "type": "rectangle",
+            "color": [0.01, 0.0, 0.0],
+            "transform": [
+                {"scale": [30, 80]},
+                {"rotate": 110},
+                {"shear_x": -0.2},
+                {"translate": [265, 270]}
+            ],
+            "alpha": 0.98
+        },
+        {
+            "type": "rectangle",
+            "color": [0.01, 0.0, 0.0],
+            "transform": [
+                {"scale": [30, 80]},
+                {"rotate": -125},
+                {"shear_x": 0.2},
+                {"translate": [340, 280]}
+            ],
+            "alpha": 0.98
+        },
+        {
+            "type": "circle",
+            "center": [200, 365],
+            "radius": 60,
+            "color": [1.0, 1.0, 1.0]
+        }, 
+        {
+            "type": "circle",
+            "center": [385, 360],
+            "radius": 70,
+            "color": [1.0, 1.0, 1.0]
+        },
+        {
+            "type": "circle",
+            "center": [190, 365],
+            "radius": 35,
+            "color": [0.0, 0.0, 0.0],
+            "alpha": 1.0
+        },
+        {
+            "type": "circle",
+            "center": [370, 360],
+            "radius": 40,
+            "color": [0.0, 0.0, 0.0],
+            "alpha": 1.0
+        }, 
+        {
+            "type": "circle",
+            "center": [350, 350],
+            "radius": 5,
+            "color": [1.0, 1.0, 1.0],
+            "alpha": 0.75
+        },
+        {
+            "type": "circle",
+            "center": [170, 355],
+            "radius": 5,
+            "color": [1.0, 1.0, 1.0],
+            "alpha": 0.75
+        },
+        {
+            "type": "triangle",
+            "color": [0.2, 0.05, 0.0],
+            "p0": [0, 90],
+            "p1": [60, 90],
+            "p2": [30, 150],
+            "transform": [
+                {"translate": [255, 350]}
+            ],
+            "alpha": 1.0
+        },
+        {
+            "type": "rectangle",
+            "color": [0.1, 0.02, 0.0],
+            "transform": [
+                {"scale": [30, 60]},
+                {"shear_y": 2.0},
+                {"translate": [255, 440]}
+            ],
+            "alpha": 1.0
+        },
+        {
+            "type": "rectangle",
+            "color": [0.1, 0.02, 0.0],
+            "transform": [
+                {"scale": [30, 60]},
+                {"shear_y": -2.0},
+                {"translate": [285, 500]}
+            ],
+            "alpha": 1.0
+        }
+    ]
+}
