@@ -293,8 +293,8 @@ Image3 hw_1_6(const std::vector<std::string> &params) {
                 // c0*alpha0 --> [shape].color (vector 3x1) * alpha (real 1x1) = 3x1 color
                 // final color = (alpha)*(foreground color) + (1 - alpha)*(background color)
                 Matrix3x3 F = get_transform(shape);
-                Vector3 invpCenter = inverse(F) * pxCenter;
-                pCenter = {invpCenter.x, invpCenter.y};
+                Vector3 invpCenter = inverse(F) * pxCenter; 
+                pCenter = {invpCenter.x, invpCenter.y}; 
                 Vector3 backgroundColor = img(x,y);
                 Vector3 foregroundColor = get_color(shape);
                 if (auto *circle = std::get_if<Circle>(&shape)) { // If the shape is a Circle,
